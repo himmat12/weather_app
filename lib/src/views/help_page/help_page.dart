@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:weather_app/src/controllers/help_page_controller/help_page_controller.dart';
 
 class HelpPage extends StatelessWidget {
-  const HelpPage({Key? key}) : super(key: key);
+  HelpPage({Key? key}) : super(key: key);
+  final _controller = Get.find<HelpPageController>();
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +33,9 @@ class HelpPage extends StatelessWidget {
               margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
               width: Get.width,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  _controller.skipSplash();
+                },
                 child: const Text("Skip"),
               ),
             ),
