@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:weather_app/src/controllers/help_page_controller/help_page_controller.dart';
+import 'package:weather_app/src/controllers/home_page_controller/home_page_controller.dart';
 
 class InitialBindings extends Bindings {
   InitialBindings._() {
@@ -10,6 +11,7 @@ class InitialBindings extends Bindings {
 
   @override
   void dependencies() {
-    Get.lazyPut(() => HelpPageController());
+    Get.lazyPut(() => HelpPageController(), fenix: true);
+    Get.lazyPut(() => HomePageController(), fenix: true);
   }
 }

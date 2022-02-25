@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:weather_app/src/services/services_exceptions.dart';
 import 'package:weather_app/src/views/global_components/custom_snackbar.dart';
@@ -15,40 +16,35 @@ mixin ExceptionsControllerMixin {
     try {
       await func();
     } on NetworkException catch (e) {
-      // print('SOCKET EXCEPTION => ${e.response}');
       if (networkExceptionsHandler != null) {
-        networkExceptionsHandler(e);
+        networkExceptionsHandler(e.response);
       } else {
         CustomSnackBar.defaultSnackBar(
-            "Network : ${ExceptionsConst.socketExceptionStr}");
+            "Network : ${jsonDecode(e.response.body)['error']['message']}");
       }
     } on TimeoutException catch (e) {
-      // print("TIMEOUT EXCEPTION => $e");
       if (timeoutExceptionHandler != null) {
-        timeoutExceptionHandler(e);
+        timeoutExceptionHandler(e.response);
       } else {
         CustomSnackBar.defaultSnackBar(
             "Timeout : ${ExceptionsConst.timeoutExceptionStr}");
       }
     } on BadRequestException catch (e) {
-      // print("BAD REQUEST EXCEPTION => $e");
-
       if (badRequestExceptionHandler != null) {
-        badRequestExceptionHandler(e);
+        badRequestExceptionHandler(e.response);
       } else {
         CustomSnackBar.defaultSnackBar(
-            "Bad Request : ${ExceptionsConst.badRequestExceptionStr}");
+            "Bad Request : ${jsonDecode(e.response.body)['error']['message']}");
       }
-    } on ServerException {
-      // print("SERVER EXCEPTION => $e");
     } on UnknownException catch (e) {
       if (unknownExceptionHandler != null) {
-        unknownExceptionHandler(e);
+        unknownExceptionHandler(e.response);
       } else {
-        // print("UNKNOWN EXCEPTION => $e");
+        CustomSnackBar.defaultSnackBar(
+            "Exception : ${jsonDecode(e.response.body)['error']['message']}");
       }
     } catch (e) {
-      // print("Base Exception $e");
+      print("Base Exception $e");
     }
   }
 }

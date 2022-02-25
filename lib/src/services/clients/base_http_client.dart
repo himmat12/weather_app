@@ -1,6 +1,8 @@
 import 'dart:convert';
 
+import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+import 'package:weather_app/src/configs/routes/routes_const.dart';
 import 'package:weather_app/src/services/clients/base_client_config.dart';
 import 'package:weather_app/src/services/services_exceptions.dart';
 
@@ -17,12 +19,14 @@ class BaseHttpClient {
       case 200:
       case 201:
       case 204:
-        throw decodeResponse(response);
+        return decodeResponse(response);
       case 400:
       case 401:
       case 403:
-      case 404:
         throw BadRequestException(response);
+      case 404:
+        Get.toNamed(RoutesName.pageNotFound);
+        break;
       case 500:
         throw ServerException(response);
       default:
@@ -51,10 +55,7 @@ class BaseHttpClient {
       case METHOD.get:
         _response = await client
             .get(
-              BaseClientConfig.parseHttpsUri(
-                  queryParameters: queryParameters ??
-                      BaseClientConfig.queryParameters(
-                          queryParameters: queryParameters)),
+              BaseClientConfig.parseHttpsUri(parameter: queryParameters),
               headers: BaseClientConfig.headers(),
             )
             .timeout(Duration(seconds: _timeOutDuration));
@@ -64,10 +65,7 @@ class BaseHttpClient {
       case METHOD.post:
         _response = await client
             .post(
-              BaseClientConfig.parseHttpsUri(
-                  queryParameters: queryParameters ??
-                      BaseClientConfig.queryParameters(
-                          queryParameters: queryParameters)),
+              BaseClientConfig.parseHttpsUri(parameter: queryParameters),
               headers: BaseClientConfig.headers(),
               body: body,
             )
@@ -78,10 +76,7 @@ class BaseHttpClient {
       case METHOD.put:
         _response = await client
             .put(
-              BaseClientConfig.parseHttpsUri(
-                  queryParameters: queryParameters ??
-                      BaseClientConfig.queryParameters(
-                          queryParameters: queryParameters)),
+              BaseClientConfig.parseHttpsUri(parameter: queryParameters),
               headers: BaseClientConfig.headers(),
               body: body,
             )
@@ -92,10 +87,7 @@ class BaseHttpClient {
       case METHOD.delete:
         _response = await client
             .delete(
-              BaseClientConfig.parseHttpsUri(
-                  queryParameters: queryParameters ??
-                      BaseClientConfig.queryParameters(
-                          queryParameters: queryParameters)),
+              BaseClientConfig.parseHttpsUri(parameter: queryParameters),
               headers: BaseClientConfig.headers(),
               body: body,
             )
