@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:weather_app/src/configs/bindings/bindings.dart';
+import 'package:weather_app/src/configs/bindings.dart';
 import 'package:weather_app/src/configs/routes/routes.dart';
 import 'package:weather_app/src/configs/routes/routes_const.dart';
 import 'package:weather_app/src/core/service_locators.dart';
