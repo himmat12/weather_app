@@ -3,8 +3,8 @@ import 'dart:convert';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:weather_app/src/configs/routes/routes_const.dart';
+import 'package:weather_app/src/exceptions/services_exceptions.dart';
 import 'package:weather_app/src/services/clients/base_client_config.dart';
-import 'package:weather_app/src/services/services_exceptions.dart';
 
 enum METHOD { get, post, put, delete }
 
