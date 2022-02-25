@@ -51,13 +51,35 @@ class HomePageController extends BaseController with ExceptionsControllerMixin {
 
   // fetch weather api data
   Future<void> fetchWeatherInfo(String query) async {
-    await exceptionsController(() async {
-      weatherState.value = ViewState.busy;
-      weatherModel.value =
-          WeatherModel.fromJson(await weatherRepo.fetchWeatherInfo(query));
-      weatherState.value = ViewState.retrived;
-      await WeatherStorage.cacheLocation(query);
-      isSaved.value = true;
-    });
+    await exceptionsController(
+      () async {
+        await WeatherStorage.cacheLocation(query);
+        isSaved.value = true;
+        weatherState.value = ViewState.busy;
+        weatherModel.value =
+            WeatherModel.fromJson(await weatherRepo.fetchWeatherInfo(query));
+        weatherState.value = ViewState.retrived;
+      },
+      badRequestExceptionHandler: (data) {
+        weatherModel.value = WeatherModel();
+        weatherState.value = ViewState.retrived;
+      },
+      networkExceptionsHandler: (data) {
+        weatherModel.value = WeatherModel();
+        weatherState.value = ViewState.retrived;
+      },
+      serverExceptionsHandler: (data) {
+        weatherModel.value = WeatherModel();
+        weatherState.value = ViewState.retrived;
+      },
+      timeoutExceptionHandler: (data) {
+        weatherModel.value = WeatherModel();
+        weatherState.value = ViewState.retrived;
+      },
+      unknownExceptionHandler: (data) {
+        weatherModel.value = WeatherModel();
+        weatherState.value = ViewState.retrived;
+      },
+    );
   }
 }

@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:weather_app/src/services/services_exceptions.dart';
+import 'package:weather_app/src/exceptions/services_exceptions.dart';
 import 'package:weather_app/src/views/global_components/custom_snackbar.dart';
 
 mixin ExceptionsControllerMixin {
@@ -18,28 +18,24 @@ mixin ExceptionsControllerMixin {
     } on NetworkException catch (e) {
       if (networkExceptionsHandler != null) {
         networkExceptionsHandler(e.response);
-      } else {
         CustomSnackBar.defaultSnackBar(
             "Network : ${jsonDecode(e.response.body)['error']['message']}");
       }
     } on TimeoutException catch (e) {
       if (timeoutExceptionHandler != null) {
         timeoutExceptionHandler(e.response);
-      } else {
         CustomSnackBar.defaultSnackBar(
             "Timeout : ${ExceptionsConst.timeoutExceptionStr}");
       }
     } on BadRequestException catch (e) {
       if (badRequestExceptionHandler != null) {
         badRequestExceptionHandler(e.response);
-      } else {
         CustomSnackBar.defaultSnackBar(
             "Bad Request : ${jsonDecode(e.response.body)['error']['message']}");
       }
     } on UnknownException catch (e) {
       if (unknownExceptionHandler != null) {
         unknownExceptionHandler(e.response);
-      } else {
         CustomSnackBar.defaultSnackBar(
             "Exception : ${jsonDecode(e.response.body)['error']['message']}");
       }
