@@ -40,7 +40,6 @@ class BaseHttpClient {
   /// base Http client requests methods [GET, POST, PUT, DELETE]
   Future<http.Response> requests({
     required METHOD method,
-    required String path,
     Map<String, dynamic>? body,
     Map<String, String>? queryParameters,
   }) async {
@@ -53,7 +52,6 @@ class BaseHttpClient {
         _response = await client
             .get(
               BaseClientConfig.parseHttpsUri(
-                  path: path,
                   queryParameters: queryParameters ??
                       BaseClientConfig.queryParameters(
                           queryParameters: queryParameters)),
@@ -67,7 +65,6 @@ class BaseHttpClient {
         _response = await client
             .post(
               BaseClientConfig.parseHttpsUri(
-                  path: path,
                   queryParameters: queryParameters ??
                       BaseClientConfig.queryParameters(
                           queryParameters: queryParameters)),
@@ -82,7 +79,6 @@ class BaseHttpClient {
         _response = await client
             .put(
               BaseClientConfig.parseHttpsUri(
-                  path: path,
                   queryParameters: queryParameters ??
                       BaseClientConfig.queryParameters(
                           queryParameters: queryParameters)),
@@ -97,7 +93,6 @@ class BaseHttpClient {
         _response = await client
             .delete(
               BaseClientConfig.parseHttpsUri(
-                  path: path,
                   queryParameters: queryParameters ??
                       BaseClientConfig.queryParameters(
                           queryParameters: queryParameters)),

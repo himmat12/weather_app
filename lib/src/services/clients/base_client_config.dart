@@ -8,7 +8,7 @@ class BaseClientConfig {
   static const String _baseClientAuthority = "api.weatherapi.com";
 
   /// unincoded path
-  static const String _prefixPath = "/v1/current.json?key=$_apiKey";
+  static const String _unencodedPath = "/v1/current.json?key=$_apiKey";
 
   /// query parameters
   static const Map<String, String> _queryParameters = {};
@@ -29,7 +29,6 @@ class BaseClientConfig {
   }
 
   /// parse https uri
-  static Uri parseHttpsUri(
-          {required String path, Map<String, String>? queryParameters}) =>
-      Uri.https(_baseClientAuthority, "$_prefixPath$path", queryParameters);
+  static Uri parseHttpsUri({Map<String, String>? queryParameters}) =>
+      Uri.https(_baseClientAuthority, _unencodedPath, queryParameters);
 }
