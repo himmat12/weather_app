@@ -8,16 +8,16 @@ class BaseClientConfig {
   static const String _baseClientAuthority = "api.weatherapi.com";
 
   /// unincoded path
-  static const String _unencodedPath = "/v1/current.json?key=$_apiKey";
+  static const String _unencodedPath = "/v1/current.json";
 
   /// query parameters
-  static const Map<String, String> _queryParameters = {};
+  static Map<String, String> queryParma = {"key": _apiKey};
 
   /// query parameters
   static Map<String, String> queryParameters(
       {Map<String, String>? queryParameters}) {
-    _queryParameters.addAll(queryParameters ?? {});
-    return _queryParameters;
+    queryParma.addAll(queryParameters ?? {});
+    return queryParma;
   }
 
   /// headers
@@ -29,6 +29,9 @@ class BaseClientConfig {
   }
 
   /// parse https uri
-  static Uri parseHttpsUri({Map<String, String>? queryParameters}) =>
-      Uri.https(_baseClientAuthority, _unencodedPath, queryParameters);
+  static Uri parseHttpsUri({Map<String, String>? parameter}) => Uri.https(
+        _baseClientAuthority,
+        _unencodedPath,
+        queryParameters(queryParameters: parameter),
+      );
 }
