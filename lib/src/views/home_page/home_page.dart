@@ -72,6 +72,9 @@ class HomePage extends GetView<HomePageController> {
                         ? const Center(child: CircularProgressIndicator())
                         : WeatherInfoWdiget(
                             key: const Key('weather_info'),
+                            imgUrl: controller.weatherModel.value.current
+                                    ?.condition?.icon ??
+                                "",
                             tempC:
                                 controller.weatherModel.value.current?.tempC ??
                                     0,

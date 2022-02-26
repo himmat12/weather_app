@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:weather_app/src/configs/color_picker.dart';
 import 'package:weather_app/src/configs/spacing.dart';
@@ -6,10 +7,12 @@ class WeatherInfoWdiget extends StatelessWidget {
   const WeatherInfoWdiget({
     required this.tempC,
     required this.tempText,
+    required this.imgUrl,
     Key? key,
   }) : super(key: key);
   final double tempC;
   final String tempText;
+  final String imgUrl;
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +33,8 @@ class WeatherInfoWdiget extends StatelessWidget {
               style: TextStyle(color: ColorPicker.blue0052CC),
               textScaleFactor: 2.4,
             ),
+            Spacing.sizedBoxW_04(),
+            CachedNetworkImage(imageUrl: 'https:$imgUrl'),
           ],
         ),
         Spacing.sizedBoxH_12(),
