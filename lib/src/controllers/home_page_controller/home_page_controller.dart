@@ -13,7 +13,7 @@ class HomePageController extends BaseController with ExceptionsControllerMixin {
   var isSaved = false.obs;
   var weatherModel = WeatherModel().obs;
 
-  Position? _position;
+  Position? position;
 
   // get current position geo-coordinates
   Future<void> getInitialWeatherInfo() async {
@@ -39,11 +39,10 @@ class HomePageController extends BaseController with ExceptionsControllerMixin {
               'Location permissions are permanently denied, we cannot request permissions.');
         }
 
-        _position = await Geolocator.getCurrentPosition();
+        position = await Geolocator.getCurrentPosition();
 
-        weatherModel.value = WeatherModel.fromJson(
-            await weatherRepo.fetchWeatherInfo(
-                "${_position?.latitude},${_position?.longitude}"));
+        weatherModel.value = WeatherModel.fromJson(await weatherRepo
+            .fetchWeatherInfo("${position?.latitude},${position?.longitude}"));
         weatherState.value = ViewState.retrived;
       },
     );
