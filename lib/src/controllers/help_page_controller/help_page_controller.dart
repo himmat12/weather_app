@@ -9,11 +9,6 @@ class HelpPageController extends BaseController {
     super.onInit();
   }
 
-  /// skip btn state
-  void skipSplash() {
-    Get.offNamed(RoutesName.homePage);
-  }
-
   /// splash screen state
   Future<void> splashAndNavigate() async {
     await Future.delayed(const Duration(seconds: 5));

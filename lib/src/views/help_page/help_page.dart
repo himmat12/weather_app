@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:weather_app/src/configs/routes/routes_const.dart';
 import 'package:weather_app/src/controllers/help_page_controller/help_page_controller.dart';
 
 class HelpPage extends StatelessWidget {
@@ -10,6 +11,7 @@ class HelpPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
+        key: const Key('asset_image'),
         height: Get.height,
         width: Get.width,
         padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 60),
@@ -23,7 +25,7 @@ class HelpPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Text(
-              "We show weather for you ",
+              "We show weather for you",
               style: TextStyle(
                 fontSize: 22,
               ),
@@ -34,7 +36,7 @@ class HelpPage extends StatelessWidget {
               width: Get.width,
               child: ElevatedButton(
                 onPressed: () {
-                  _controller.skipSplash();
+                  Get.offNamed(RoutesName.homePage);
                 },
                 child: const Text("Skip"),
               ),

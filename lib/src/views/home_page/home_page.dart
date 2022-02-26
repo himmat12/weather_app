@@ -71,6 +71,7 @@ class HomePage extends GetView<HomePageController> {
                     () => controller.weatherState.value == ViewState.busy
                         ? const Center(child: CircularProgressIndicator())
                         : WeatherInfoWdiget(
+                            key: const Key('weather_info'),
                             tempC:
                                 controller.weatherModel.value.current?.tempC ??
                                     0,

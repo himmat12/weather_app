@@ -1,5 +1,7 @@
 ## weather_app
+
 > A simple weather app which shows weather info of specified locations by consuming weatherapi data.
+
 
 ### Screenshots
 ![image](https://user-images.githubusercontent.com/48753714/155760353-186816cc-31ad-417c-8d1c-b511ba78e409.png)
