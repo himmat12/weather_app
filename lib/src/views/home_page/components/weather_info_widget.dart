@@ -34,10 +34,12 @@ class WeatherInfoWdiget extends StatelessWidget {
               textScaleFactor: 2.4,
             ),
             Spacing.sizedBoxW_04(),
-            CachedNetworkImage(
-              imageUrl: 'https:$imgUrl',
-              fit: BoxFit.scaleDown,
-            ),
+            imgUrl == ""
+                ? const SizedBox.shrink()
+                : CachedNetworkImage(
+                    imageUrl: 'https:$imgUrl',
+                    fit: BoxFit.scaleDown,
+                  ),
           ],
         ),
         Spacing.sizedBoxH_12(),

@@ -15,6 +15,7 @@ WeatherModel _$WeatherModelFromJson(Map<String, dynamic> json) => WeatherModel(
           : Current.fromJson(json['current'] as Map<String, dynamic>),
     );
 
+// ignore: unused_element
 Map<String, dynamic> _$WeatherModelToJson(WeatherModel instance) =>
     <String, dynamic>{
       'location': instance.location,
@@ -49,6 +50,7 @@ Current _$CurrentFromJson(Map<String, dynamic> json) => Current(
       gustKph: (json['gust_kph'] as num?)?.toDouble(),
     );
 
+// ignore: unused_element
 Map<String, dynamic> _$CurrentToJson(Current instance) => <String, dynamic>{
       'last_updated_epoch': instance.lastUpdatedEpoch,
       'last_updated': instance.lastUpdated,
@@ -81,6 +83,7 @@ Condition _$ConditionFromJson(Map<String, dynamic> json) => Condition(
       code: json['code'] as int?,
     );
 
+// ignore: unused_element
 Map<String, dynamic> _$ConditionToJson(Condition instance) => <String, dynamic>{
       'text': instance.text,
       'icon': instance.icon,
@@ -98,6 +101,7 @@ Location _$LocationFromJson(Map<String, dynamic> json) => Location(
       localtime: json['localtime'] as String?,
     );
 
+// ignore: unused_element
 Map<String, dynamic> _$LocationToJson(Location instance) => <String, dynamic>{
       'name': instance.name,
       'region': instance.region,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get/get_rx/src/rx_workers/utils/debouncer.dart';
 import 'package:weather_app/src/configs/routes/routes_const.dart';
 import 'package:weather_app/src/configs/spacing.dart';
 import 'package:weather_app/src/controllers/base_controller.dart';
@@ -11,6 +12,9 @@ class HomePage extends GetView<HomePageController> {
   HomePage({Key? key}) : super(key: key);
   final textController =
       TextEditingController(text: weatherStorage.read('location'));
+
+  final textFieldDebouncer =
+      Debouncer(delay: const Duration(milliseconds: 500));
 
   @override
   Widget build(BuildContext context) {
@@ -45,6 +49,12 @@ class HomePage extends GetView<HomePageController> {
                 children: [
                   TextFormField(
                     controller: textController,
+                    onChanged: (value) {
+                      // TODO: implementations..
+                      textFieldDebouncer.call(() {
+                        controller.fetchWeatherInfo(value);
+                      });
+                    },
                     decoration: const InputDecoration(
                         hintText: "place or, geo-coordinates"),
                   ),
