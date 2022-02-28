@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:weather_app/src/configs/routes/routes_const.dart';
-import 'package:weather_app/src/controllers/help_page_controller/help_page_controller.dart';
 
 class HelpPage extends StatelessWidget {
-  HelpPage({Key? key}) : super(key: key);
-  final _controller = Get.find<HelpPageController>();
+  const HelpPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

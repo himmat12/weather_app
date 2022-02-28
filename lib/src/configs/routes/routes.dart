@@ -7,7 +7,7 @@ import 'package:weather_app/src/views/page_not_found.dart';
 class Routes {
   static List<GetPage> getPages() {
     return [
-      GetPage(name: RoutesName.helpPage, page: () => HelpPage()),
+      GetPage(name: RoutesName.helpPage, page: () => const HelpPage()),
       GetPage(name: RoutesName.homePage, page: () => HomePage()),
       GetPage(name: RoutesName.pageNotFound, page: () => const PageNotFound()),
     ];
