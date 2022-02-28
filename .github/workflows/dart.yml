@@ -8,10 +8,7 @@ name: Dart
 on:
   push:
     branches:
-    - master
-  pull_request:
-    branches:
-    - master
+      - master
 
 jobs:
   build:
@@ -42,7 +39,7 @@ jobs:
       # want to change this to 'flutter test'.
       - name: Run tests
         run: dart test
-        
+
       # build apk per abi
       - name: Run flutter build
         run: flutter build --split-per-abi
