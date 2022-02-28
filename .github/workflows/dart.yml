@@ -39,7 +39,7 @@ jobs:
       - run: flutter test
 
       # Build apk.
-      - run: flutter build --split-per-abi
+      - run: flutter build apk --split-per-abi --release
       
       - name: Build APPBUNDLE
         run: flutter build appbundle --release
