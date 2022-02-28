@@ -40,7 +40,7 @@ mixin ExceptionsControllerMixin {
             "Exception : ${jsonDecode(e.response.body)['error']['message']}");
       }
     } catch (e) {
-      print("Base Exception $e");
+      // print("Base Exception $e");
     }
   }
 }
