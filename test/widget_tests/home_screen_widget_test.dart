@@ -16,7 +16,7 @@ void main() {
       initialBinding: InitialBindings(),
     ));
     expect(find.byType(CircularProgressIndicator), findsOneWidget);
-    await tester.pump();
+    await tester.pump(const Duration(seconds: 1));
     expect(find.text('Weather App'), findsOneWidget);
     expect(find.byType(ElevatedButton), findsOneWidget);
     expect(find.byType(TextFormField), findsOneWidget);
