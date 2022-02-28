@@ -45,7 +45,7 @@ jobs:
         run: flutter build appbundle --release
 
       - name: Create Github Release
-        uses: ncipollo/release-action@v1
+        uses: subosito/release-action@v1
         with:
           artifacts: "build/app/outputs/apk/release/*.apk,build/app/outputs/bundle/release/*.aab"
           token: ${{ secrets.WEATHER_SECRET }}
