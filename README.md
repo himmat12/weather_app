@@ -4,7 +4,10 @@
 
 
 ### Screenshots
-![image](https://user-images.githubusercontent.com/48753714/155853413-b88d88e8-4791-4c02-aaea-3adb0d2943a7.png)
+<!-- ![image](https://user-images.githubusercontent.com/48753714/155853413-b88d88e8-4791-4c02-aaea-3adb0d2943a7.png) -->
+![ezgif-4-6c772d230a](https://user-images.githubusercontent.com/48753714/156516447-ca92f796-2729-4470-994c-0bc938a48644.gif)
+
+
 
 ### Getting Started
 #### [Setup Flutter](https://flutter.dev/docs/get-started/install)
